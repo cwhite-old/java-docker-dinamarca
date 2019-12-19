@@ -4,6 +4,7 @@ import com.celsia.dinamarca.domain.model.QRModel;
 import com.celsia.dinamarca.domain.repository.QRRepository;
 import com.celsia.dinamarca.domain.service.QRService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.retry.support.RetryTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,10 +13,12 @@ import java.util.List;
 public final class QRServiceImpl implements QRService {
 
     private final QRRepository repository;
+    private final RetryTemplate retryTemplate;
 
     @Autowired
-    public QRServiceImpl(final QRRepository repository) {
+    public QRServiceImpl(final QRRepository repository, final RetryTemplate retryTemplate) {
         this.repository = repository;
+        this.retryTemplate = retryTemplate;
     }
 
     @Override
@@ -25,7 +28,7 @@ public final class QRServiceImpl implements QRService {
 
     @Override
     public QRModel save(QRModel model) {
-        return repository.save(model);
+        return retryTemplate.execute(context -> repository.save(model));
     }
 
 }

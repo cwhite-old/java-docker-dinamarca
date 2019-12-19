@@ -8,3 +8,10 @@ spring:
   data:
     mongodb:
       uri: mongodb://@localhost:27017/qr_codes
+
+dinamarca:
+  services:
+    configuration:
+      retry:
+        interval: 3000
+        attempts: 3
