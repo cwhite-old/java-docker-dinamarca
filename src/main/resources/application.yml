@@ -3,3 +3,8 @@ server:
     accesslog:
       directory: /var/log/dinamarca-services
       enabled: true
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://@localhost:27017/qr_codes

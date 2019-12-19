@@ -1,8 +1,11 @@
 package com.celsia.dinamarca.api.rest.entity;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 
-public class QRContent {
+@Data
+public final class QRContent {
 
     @NotNull
     private String imei;
@@ -11,29 +14,6 @@ public class QRContent {
     private String location;
 
     @NotNull
-    private String qr;
+    private String content;
 
-    public String getImei() {
-        return imei;
-    }
-
-    public void setImei(String imei) {
-        this.imei = imei;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getQr() {
-        return qr;
-    }
-
-    public void setQr(String qr) {
-        this.qr = qr;
-    }
 }
