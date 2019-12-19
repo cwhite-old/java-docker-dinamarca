@@ -1,5 +1,7 @@
 package com.celsia.dinamarca.api.rest;
 
+import com.celsia.dinamarca.api.rest.entity.QRContent;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -15,7 +17,7 @@ public final class QRApi {
     }
 
     @PostMapping
-    public void postQRCode(@PathVariable("device") final String device, @RequestBody final String content) {
+    public ResponseEntity postQRCode(@PathVariable("device") final String device, @RequestBody final QRContent content) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
