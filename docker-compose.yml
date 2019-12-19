@@ -1,0 +1,18 @@
+version: '3'
+services:
+  dinamarca-services:
+    container_name: dinamarca-services
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT}
+      - SPRING_OPTS=${SPRING_OPTS}
+    ports:
+      - 8080:8080
+    networks:
+      - dinamarca-services
+
+networks:
+  dinamarca-services:
+    driver: bridge
