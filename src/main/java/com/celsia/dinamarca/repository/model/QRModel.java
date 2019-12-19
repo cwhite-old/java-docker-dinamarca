@@ -1,17 +1,22 @@
-package com.celsia.dinamarca.api.rest.entity;
+package com.celsia.dinamarca.repository.model;
 
-import javax.validation.constraints.NotNull;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class QRContent {
+@Document
+public class QRModel {
 
-    @NotNull
+    private String deviceId;
     private String imei;
-
-    @NotNull
     private String location;
-
-    @NotNull
     private String qr;
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
 
     public String getImei() {
         return imei;

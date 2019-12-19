@@ -1,6 +1,10 @@
 package com.celsia.dinamarca.api.rest;
 
 import com.celsia.dinamarca.api.rest.entity.QRContent;
+import com.celsia.dinamarca.repository.model.QRModel;
+import com.celsia.dinamarca.service.QRService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +15,16 @@ import java.util.Collections;
 @RequestMapping("/qr-api/v1/codes/{device}")
 public final class QRApi {
 
+    private QRService qrService;
+
+    @Autowired
+    public QRApi(QRService qrService) {
+        this.qrService = qrService;
+    }
+
     @GetMapping
-    public Collection<String> getQRCodes(@PathVariable("device") final String device) {
-        return Collections.emptyList();
+    public ResponseEntity<Collection<QRModel>> getQRCodes(@PathVariable("device") final String device) {
+        return ResponseEntity.ok(qrService.findAllByDeviceId(device));
     }
 
     @PostMapping
