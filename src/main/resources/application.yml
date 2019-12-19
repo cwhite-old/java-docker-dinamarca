@@ -1,0 +1,5 @@
+server:
+  tomcat:
+    accesslog:
+      directory: /var/log/dinamarca-services
+      enabled: true
